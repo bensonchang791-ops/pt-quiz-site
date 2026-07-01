@@ -3,6 +3,7 @@ const COMPRESSED_DATA_INDEX = "data/question-bank.parts.json";
 const MANIFEST_PATH = "data/source-manifest.json";
 const WRONG_KEY = "examWrongItems.v1";
 const HISTORY_KEY = "examHistory.v1";
+const NOTES_KEY = "examQuestionNotes.v1";
 
 const state = {
   bank: { subjects: [], questions: [] },
@@ -25,14 +26,18 @@ const dom = {
   pageTitle: $("#pageTitle"),
   pageSubtitle: $("#pageSubtitle"),
   subjectSelect: $("#subjectSelect"),
-  yearSelect: $("#yearSelect"),
+  startYearSelect: $("#startYearSelect"),
+  endYearSelect: $("#endYearSelect"),
   countInput: $("#countInput"),
   availableCount: $("#availableCount"),
   buildStatus: $("#buildStatus"),
+  questionPanel: $(".question-panel"),
   questionNumber: $("#questionNumber"),
   questionProgress: $("#questionProgress"),
   questionMeta: $("#questionMeta"),
   questionText: $("#questionText"),
+  questionMedia: $("#questionMedia"),
+  questionNote: $("#questionNote"),
   options: $("#options"),
   answerPanel: $("#answerPanel"),
   answerTitle: $("#answerTitle"),
@@ -120,6 +125,7 @@ function normalizeQuestions(questions) {
     ...question,
     tags: Array.isArray(question.tags) ? question.tags : [],
     options: Array.isArray(question.options) ? question.options : [],
+    media: Array.isArray(question.media) ? question.media : [],
     acceptedAnswers: Array.isArray(question.acceptedAnswers) && question.acceptedAnswers.length
       ? question.acceptedAnswers
       : [question.answer].filter(Boolean)
@@ -146,14 +152,28 @@ function allSubjects() {
   return [...new Set([...fromBank, ...fromQuestions])].filter(Boolean);
 }
 
-function yearSessionValue(question) {
-  return `${question.year}|${question.session}`;
+function allYears() {
+  return [...new Set(state.bank.questions
+    .map((question) => Number(question.year))
+    .filter((year) => Number.isFinite(year)))]
+    .sort((a, b) => a - b);
 }
 
-function yearSessionLabel(value) {
-  if (value === "all") return "混合年度";
-  const [year, session] = value.split("|");
-  return `${year} 年${session}`;
+function getYearRange(options = {}) {
+  const selectedStart = Number(options.startYear ?? dom.startYearSelect.value);
+  const selectedEnd = Number(options.endYear ?? dom.endYearSelect.value);
+
+  if (!Number.isFinite(selectedStart) || !Number.isFinite(selectedEnd)) {
+    return { startYear: null, endYear: null, label: "全部年份" };
+  }
+
+  const startYear = Math.min(selectedStart, selectedEnd);
+  const endYear = Math.max(selectedStart, selectedEnd);
+  return {
+    startYear,
+    endYear,
+    label: startYear === endYear ? `${startYear} 年` : `${startYear}-${endYear} 年`
+  };
 }
 
 function populateControls() {
@@ -167,18 +187,16 @@ function populateControls() {
     ...subjects.map((subject) => `<option value="${escapeAttr(subject)}">${escapeHtml(subject)}</option>`)
   ].join("");
 
-  const yearValues = [...new Set(state.bank.questions.map(yearSessionValue))]
-    .sort((a, b) => {
-      const [yearA, sessionA] = a.split("|");
-      const [yearB, sessionB] = b.split("|");
-      if (Number(yearB) !== Number(yearA)) return Number(yearB) - Number(yearA);
-      return sessionB.localeCompare(sessionA, "zh-Hant");
-    });
-
-  dom.yearSelect.innerHTML = [
-    "<option value=\"all\">混合年度</option>",
-    ...yearValues.map((value) => `<option value="${escapeAttr(value)}">${escapeHtml(yearSessionLabel(value))}</option>`)
-  ].join("");
+  const years = allYears();
+  const yearOptions = years.length
+    ? years.map((year) => `<option value="${year}">${year} 年</option>`).join("")
+    : "<option value=\"\">--</option>";
+  dom.startYearSelect.innerHTML = yearOptions;
+  dom.endYearSelect.innerHTML = yearOptions;
+  if (years.length) {
+    dom.startYearSelect.value = String(years[0]);
+    dom.endYearSelect.value = String(years[years.length - 1]);
+  }
 }
 
 function updateSideStats() {
@@ -206,9 +224,26 @@ function updateAvailability() {
   dom.availableCount.textContent = `${questions.length} 題可用`;
 }
 
+function syncYearRange(changedControl) {
+  const start = Number(dom.startYearSelect.value);
+  const end = Number(dom.endYearSelect.value);
+  if (!Number.isFinite(start) || !Number.isFinite(end)) {
+    updateAvailability();
+    return;
+  }
+
+  if (start > end && changedControl === "start") {
+    dom.endYearSelect.value = String(start);
+  } else if (start > end && changedControl === "end") {
+    dom.startYearSelect.value = String(end);
+  }
+
+  updateAvailability();
+}
+
 function filterQuestions(options = {}) {
   const subject = options.subject ?? dom.subjectSelect.value;
-  const year = options.year ?? dom.yearSelect.value;
+  const yearRange = getYearRange(options);
   const mode = options.mode ?? state.mode;
   let questions = state.bank.questions;
 
@@ -221,8 +256,11 @@ function filterQuestions(options = {}) {
     questions = questions.filter((question) => question.subject === subject);
   }
 
-  if (year && year !== "all") {
-    questions = questions.filter((question) => yearSessionValue(question) === year);
+  if (yearRange.startYear !== null && yearRange.endYear !== null) {
+    questions = questions.filter((question) => (
+      Number(question.year) >= yearRange.startYear
+      && Number(question.year) <= yearRange.endYear
+    ));
   }
 
   return questions;
@@ -279,9 +317,42 @@ function setModeButton(mode) {
   updateAvailability();
 }
 
+function questionMediaHtml(question) {
+  const media = Array.isArray(question.media) ? question.media : [];
+  return media.map((item, index) => {
+    const src = typeof item === "string" ? item : item.src;
+    const alt = typeof item === "string" ? `題目圖片 ${index + 1}` : item.alt;
+    if (!src) return "";
+    return `<img src="${escapeAttr(src)}" alt="${escapeAttr(alt || `題目圖片 ${index + 1}`)}" loading="lazy">`;
+  }).join("");
+}
+
+function loadNotes() {
+  return loadStore(NOTES_KEY, {});
+}
+
+function questionNote(questionId) {
+  return loadNotes()[questionId] || "";
+}
+
+function saveQuestionNote(questionId, note) {
+  const notes = loadNotes();
+  const trimmed = note.trim();
+  if (trimmed) {
+    notes[questionId] = note;
+  } else {
+    delete notes[questionId];
+  }
+  saveStore(NOTES_KEY, notes);
+}
+
 function renderExam() {
   if (!state.exam.length) {
+    dom.questionPanel.classList.remove("review-correct", "review-wrong");
     dom.questionText.textContent = "尚未產生試卷";
+    dom.questionMedia.hidden = true;
+    dom.questionMedia.innerHTML = "";
+    dom.questionNote.value = "";
     dom.options.innerHTML = "";
     dom.questionMap.innerHTML = "";
     return;
@@ -291,15 +362,22 @@ function renderExam() {
   const selected = state.answers[question.id];
   const answeredCount = Object.keys(state.answers).length;
   const total = state.exam.length;
+  const isSubmittedCorrect = state.submitted && isCorrectAnswer(question, selected);
+  const isSubmittedWrong = state.submitted && !isCorrectAnswer(question, selected);
 
   dom.questionNumber.textContent = `第 ${state.current + 1} 題`;
   dom.questionProgress.textContent = `${state.current + 1} / ${total}`;
   dom.questionText.textContent = question.stem;
+  dom.questionMedia.innerHTML = questionMediaHtml(question);
+  dom.questionMedia.hidden = !dom.questionMedia.innerHTML;
+  dom.questionNote.value = questionNote(question.id);
   dom.doneCount.textContent = String(answeredCount);
   dom.markedCount.textContent = String(state.marked.size);
   dom.examCount.textContent = String(total);
   dom.mapStatus.textContent = answeredCount ? `已答 ${answeredCount} 題` : "尚未作答";
   dom.markBtn.textContent = state.marked.has(question.id) ? "取消標記" : "標記";
+  dom.questionPanel.classList.toggle("review-correct", isSubmittedCorrect);
+  dom.questionPanel.classList.toggle("review-wrong", isSubmittedWrong);
 
   dom.questionMeta.innerHTML = [
     pill(question.subject, "green"),
@@ -310,6 +388,7 @@ function renderExam() {
 
   dom.options.innerHTML = question.options.map((option) => {
     const classes = ["option"];
+    if (question.hasImageOptions && option.text === "見上方圖片") classes.push("image-option");
     if (selected === option.key) classes.push("selected");
     if (state.submitted && acceptedAnswers(question).includes(option.key)) classes.push("correct");
     if (state.submitted && selected === option.key && !isCorrectAnswer(question, selected)) classes.push("wrong");
@@ -343,6 +422,9 @@ function renderMap() {
     if (index === state.current) classes.push("current");
     if (state.answers[question.id]) classes.push("done");
     if (state.marked.has(question.id)) classes.push("marked");
+    if (state.submitted) {
+      classes.push(isCorrectAnswer(question, state.answers[question.id]) ? "correct" : "wrong");
+    }
     return `<button class="${classes.join(" ")}" type="button" data-index="${index}">${index + 1}</button>`;
   }).join("");
 
@@ -415,12 +497,13 @@ function submitExam() {
   });
 
   const history = loadStore(HISTORY_KEY, []);
+  const yearRange = getYearRange();
   history.unshift({
     score: result.score,
     total: state.exam.length,
     correct: result.correct,
     subject: dom.subjectSelect.value,
-    year: dom.yearSelect.value,
+    yearRange: yearRange.label,
     elapsedSeconds: state.elapsedSeconds,
     finishedAt: new Date().toISOString()
   });
@@ -452,6 +535,7 @@ function renderWrongBook() {
   dom.wrongList.innerHTML = wrongItems.map(({ question, selected }) => `
     <article class="item">
       <h4>${escapeHtml(question.stem)}</h4>
+      ${questionMediaHtml(question) ? `<div class="question-media item-media">${questionMediaHtml(question)}</div>` : ""}
       <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · 你的答案 ${escapeHtml(selected || "未作答")} · 正解 ${escapeHtml(answerLabel(question))}</p>
       <p>${escapeHtml(question.explanation || "尚未匯入解析。")}</p>
       <div class="item-actions">
@@ -503,6 +587,7 @@ function renderSearch() {
         question.subject,
         question.sourceFile,
         question.answerFile,
+        question.hasImageOptions ? "圖片選項" : "",
         ...(question.tags || [])
       ].join(" ").toLowerCase();
       return haystack.includes(query);
@@ -520,7 +605,7 @@ function renderSearch() {
     <article class="item">
       <h4>${escapeHtml(question.stem)}</h4>
       <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · ${escapeHtml(question.sourceFile || "")}</p>
-      <p>答案 ${escapeHtml(answerLabel(question))} · ${escapeHtml((question.tags || []).join("、"))}</p>
+      <p>答案 ${escapeHtml(answerLabel(question))} · ${escapeHtml((question.tags || []).join("、"))}${question.hasImageOptions ? " · 圖片選項" : ""}</p>
     </article>
   `).join("");
 }
@@ -537,7 +622,7 @@ function renderImport() {
 
   const subjects = manifest.subjects || [];
   const issues = manifest.issues || [];
-  dom.importSubtitle.textContent = `${manifest.totals.questionPdfs} 份試題 · ${manifest.totals.answerPdfs} 份解答`;
+  dom.importSubtitle.textContent = `${manifest.totals.questionPdfs} 份試題 · ${manifest.totals.answerPdfs} 份解答 · ${manifest.totals.imageQuestions || 0} 題圖片選項`;
   dom.issueCount.textContent = `${issues.length} 筆`;
 
   dom.importGrid.innerHTML = subjects.map((subject) => `
@@ -546,6 +631,7 @@ function renderImport() {
       <div class="side-stat"><span>試題</span><strong>${subject.questionPdfs}</strong></div>
       <div class="side-stat"><span>已配對</span><strong>${subject.pairedQuestionPdfs}</strong></div>
       <div class="side-stat"><span>解答</span><strong>${subject.answerPdfs}</strong></div>
+      <div class="side-stat"><span>圖片題</span><strong>${subject.imageQuestionCount || 0}</strong></div>
     </article>
   `).join("");
 
@@ -695,9 +781,18 @@ function bindEvents() {
     renderTimer();
   });
 
-  [dom.subjectSelect, dom.yearSelect, dom.countInput].forEach((control) => {
+  dom.startYearSelect.addEventListener("change", () => syncYearRange("start"));
+  dom.endYearSelect.addEventListener("change", () => syncYearRange("end"));
+
+  [dom.subjectSelect, dom.countInput].forEach((control) => {
     control.addEventListener("change", updateAvailability);
     control.addEventListener("input", updateAvailability);
+  });
+
+  dom.questionNote.addEventListener("input", () => {
+    const question = state.exam[state.current];
+    if (!question) return;
+    saveQuestionNote(question.id, dom.questionNote.value);
   });
 
   [dom.searchSubject, dom.searchInput].forEach((control) => {
