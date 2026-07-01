@@ -1,4 +1,5 @@
 const DATA_PATH = "data/question-bank.json";
+const COMPRESSED_DATA_INDEX = "data/question-bank.parts.json";
 const MANIFEST_PATH = "data/source-manifest.json";
 const WRONG_KEY = "examWrongItems.v1";
 const HISTORY_KEY = "examHistory.v1";
@@ -69,6 +70,38 @@ async function readJson(path, fallback) {
   }
 }
 
+async function readCompressedQuestionBank(path, fallback) {
+  try {
+    if (!("DecompressionStream" in window)) {
+      throw new Error("Compression API unavailable");
+    }
+
+    const indexResponse = await fetch(path, { cache: "no-store" });
+    if (!indexResponse.ok) throw new Error(`HTTP ${indexResponse.status}`);
+    const index = await indexResponse.json();
+    const parts = Array.isArray(index.parts) ? index.parts : [];
+    if (!parts.length) throw new Error("No compressed parts");
+
+    const basePath = path.includes("/") ? path.slice(0, path.lastIndexOf("/") + 1) : "";
+    const chunks = await Promise.all(parts.map(async (part) => {
+      const response = await fetch(`${basePath}${part}`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.text();
+    }));
+
+    const binary = atob(chunks.join("").replace(/\s+/g, ""));
+    const bytes = new Uint8Array(binary.length);
+    for (let index = 0; index < binary.length; index += 1) {
+      bytes[index] = binary.charCodeAt(index);
+    }
+
+    const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+    return JSON.parse(await new Response(stream).text());
+  } catch (error) {
+    return readJson(DATA_PATH, fallback);
+  }
+}
+
 function loadStore(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -86,8 +119,25 @@ function normalizeQuestions(questions) {
   return questions.map((question) => ({
     ...question,
     tags: Array.isArray(question.tags) ? question.tags : [],
-    options: Array.isArray(question.options) ? question.options : []
+    options: Array.isArray(question.options) ? question.options : [],
+    acceptedAnswers: Array.isArray(question.acceptedAnswers) && question.acceptedAnswers.length
+      ? question.acceptedAnswers
+      : [question.answer].filter(Boolean)
   }));
+}
+
+function acceptedAnswers(question) {
+  return Array.isArray(question.acceptedAnswers) && question.acceptedAnswers.length
+    ? question.acceptedAnswers
+    : [question.answer].filter(Boolean);
+}
+
+function isCorrectAnswer(question, selected) {
+  return Boolean(selected) && acceptedAnswers(question).includes(selected);
+}
+
+function answerLabel(question) {
+  return acceptedAnswers(question).join(" / ") || question.answer || "--";
 }
 
 function allSubjects() {
@@ -261,8 +311,8 @@ function renderExam() {
   dom.options.innerHTML = question.options.map((option) => {
     const classes = ["option"];
     if (selected === option.key) classes.push("selected");
-    if (state.submitted && option.key === question.answer) classes.push("correct");
-    if (state.submitted && selected === option.key && option.key !== question.answer) classes.push("wrong");
+    if (state.submitted && acceptedAnswers(question).includes(option.key)) classes.push("correct");
+    if (state.submitted && selected === option.key && !isCorrectAnswer(question, selected)) classes.push("wrong");
     return `
       <button class="${classes.join(" ")}" type="button" data-answer="${escapeAttr(option.key)}">
         <span class="letter">${escapeHtml(option.key)}</span>
@@ -308,7 +358,7 @@ function renderMap() {
 function showAnswer(forceVisible) {
   const question = state.exam[state.current];
   if (!question) return;
-  dom.answerTitle.textContent = `答案：${question.answer}`;
+  dom.answerTitle.textContent = `答案：${answerLabel(question)}`;
   dom.answerText.textContent = question.explanation || "尚未匯入解析。";
   dom.answerPanel.classList.toggle("visible", Boolean(forceVisible));
 }
@@ -332,7 +382,7 @@ function calculateResult() {
   let correct = 0;
 
   state.exam.forEach((question) => {
-    if (state.answers[question.id] === question.answer) {
+    if (isCorrectAnswer(question, state.answers[question.id])) {
       correct += 1;
     } else {
       wrong.push(question);
@@ -353,7 +403,7 @@ function submitExam() {
 
   state.exam.forEach((question) => {
     const selected = state.answers[question.id] || "";
-    if (selected !== question.answer) {
+    if (!isCorrectAnswer(question, selected)) {
       wrongStore[question.id] = {
         questionId: question.id,
         selected,
@@ -402,7 +452,7 @@ function renderWrongBook() {
   dom.wrongList.innerHTML = wrongItems.map(({ question, selected }) => `
     <article class="item">
       <h4>${escapeHtml(question.stem)}</h4>
-      <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · 你的答案 ${escapeHtml(selected || "未作答")} · 正解 ${escapeHtml(question.answer)}</p>
+      <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · 你的答案 ${escapeHtml(selected || "未作答")} · 正解 ${escapeHtml(answerLabel(question))}</p>
       <p>${escapeHtml(question.explanation || "尚未匯入解析。")}</p>
       <div class="item-actions">
         <button class="ghost-btn" type="button" data-practice="${escapeAttr(question.id)}">重新練習</button>
@@ -470,7 +520,7 @@ function renderSearch() {
     <article class="item">
       <h4>${escapeHtml(question.stem)}</h4>
       <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · ${escapeHtml(question.sourceFile || "")}</p>
-      <p>答案 ${escapeHtml(question.answer)} · ${escapeHtml((question.tags || []).join("、"))}</p>
+      <p>答案 ${escapeHtml(answerLabel(question))} · ${escapeHtml((question.tags || []).join("、"))}</p>
     </article>
   `).join("");
 }
@@ -658,7 +708,7 @@ function bindEvents() {
 
 async function init() {
   const [bank, manifest] = await Promise.all([
-    readJson(DATA_PATH, { subjects: [], questions: [] }),
+    readCompressedQuestionBank(COMPRESSED_DATA_INDEX, { subjects: [], questions: [] }),
     readJson(MANIFEST_PATH, null)
   ]);
 
