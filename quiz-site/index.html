@@ -69,8 +69,12 @@
               <select id="subjectSelect"></select>
             </label>
             <label class="field">
-              <span>年度</span>
-              <select id="yearSelect"></select>
+              <span>起始年</span>
+              <select id="startYearSelect"></select>
+            </label>
+            <label class="field">
+              <span>結束年</span>
+              <select id="endYearSelect"></select>
             </label>
             <label class="field">
               <span>題數</span>
@@ -99,7 +103,12 @@
 
             <div class="meta-row" id="questionMeta"></div>
             <h3 class="question-title" id="questionText"></h3>
+            <div class="question-media" id="questionMedia" hidden></div>
             <div class="options" id="options"></div>
+            <label class="note-box">
+              <span>筆記</span>
+              <textarea id="questionNote" rows="4" placeholder="我的筆記"></textarea>
+            </label>
 
             <div class="question-actions">
               <button class="ghost-btn" type="button" id="prevBtn">上一題</button>
