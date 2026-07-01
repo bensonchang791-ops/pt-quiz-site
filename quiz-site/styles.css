@@ -282,7 +282,7 @@ button {
 
 .builder-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
   gap: 12px;
   align-items: end;
 }
@@ -360,6 +360,16 @@ button {
   padding: 18px;
 }
 
+.question-panel.review-correct {
+  background: linear-gradient(180deg, #f4fbf8 0%, #ffffff 180px);
+  border-color: #b8d9cd;
+}
+
+.question-panel.review-wrong {
+  background: linear-gradient(180deg, #fff3f1 0%, #ffffff 180px);
+  border-color: #e6aaa4;
+}
+
 .question-head {
   align-items: flex-start;
 }
@@ -404,6 +414,34 @@ button {
   letter-spacing: 0;
 }
 
+.question-media {
+  display: grid;
+  gap: 10px;
+  margin: -2px 0 18px;
+}
+
+.question-media[hidden] {
+  display: none;
+}
+
+.question-media img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.item-media {
+  margin: 8px 0 10px;
+}
+
+.item-media img {
+  max-height: 360px;
+  object-fit: contain;
+  object-position: left top;
+}
+
 .options {
   display: grid;
   gap: 10px;
@@ -441,6 +479,10 @@ button {
   background: var(--red-soft);
 }
 
+.option.image-option {
+  color: var(--muted);
+}
+
 .letter {
   width: 32px;
   height: 32px;
@@ -457,6 +499,36 @@ button {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 18px;
+}
+
+.note-box {
+  display: block;
+  margin-top: 14px;
+}
+
+.note-box span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.note-box textarea {
+  width: 100%;
+  min-height: 96px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  resize: vertical;
+  outline: 0;
+  background: #fbfcfc;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.note-box textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(29, 107, 88, .13);
 }
 
 .answer-panel {
@@ -563,6 +635,16 @@ button {
 .question-map button.done {
   background: var(--green-soft);
   color: var(--green);
+}
+
+.question-map button.correct {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.question-map button.wrong {
+  background: var(--red);
+  color: #ffffff;
 }
 
 .question-map button.marked {
