@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "name": "國考題庫",
+  "subjects": [
+    "國考基礎學",
+    "概論",
+    "技術學",
+    "神經",
+    "骨科",
+    "心肺加小兒"
+  ],
+  "questions": [
+    {
+      "id": "demo-basic-001",
+      "subject": "國考基礎學",
+      "year": 113,
+      "session": "第二次",
+      "sourceFile": "國考基礎學/113第二次基礎學.pdf",
+      "answerFile": "解答/113第二次/113第二次基礎學解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：匯入後，系統會依哪一層資料夾建立科目分類？",
+      "options": [
+        { "key": "A", "text": "依照檔案建立日期自動分組。" },
+        { "key": "B", "text": "依照最上層科目資料夾名稱建立分類。" },
+        { "key": "C", "text": "依照檔案大小排列，不另外分類。" },
+        { "key": "D", "text": "只依照解答資料夾年份分類。" }
+      ],
+      "answer": "B",
+      "explanation": "題庫匯入時會以你的科目資料夾作為主分類，例如國考基礎學、概論、技術學、神經、骨科、心肺加小兒。",
+      "tags": ["匯入流程", "科目分類"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-basic-002",
+      "subject": "國考基礎學",
+      "year": 114,
+      "session": "第一次",
+      "sourceFile": "國考基礎學/114第一次基礎學.pdf",
+      "answerFile": "解答/114第一次/114第一次基礎學解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "基礎",
+      "stem": "示範題：題庫資料中應保留哪個欄位，方便回頭核對原始 PDF？",
+      "options": [
+        { "key": "A", "text": "來源檔案與原始題號。" },
+        { "key": "B", "text": "瀏覽器視窗寬度。" },
+        { "key": "C", "text": "作答按鈕顏色。" },
+        { "key": "D", "text": "電腦目前電量。" }
+      ],
+      "answer": "A",
+      "explanation": "每題保留來源檔案、解答檔案與原始題號，後續校對時才找得到原始位置。",
+      "tags": ["資料格式"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-intro-001",
+      "subject": "概論",
+      "year": 114,
+      "session": "第一次",
+      "sourceFile": "概論/114第一次概論.pdf",
+      "answerFile": "解答/114第一次/114第一次概論解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：選擇「概論」後，模擬考會優先抽取哪一批檔案？",
+      "options": [
+        { "key": "A", "text": "所有資料夾中的 PDF。" },
+        { "key": "B", "text": "只抽取解答資料夾。" },
+        { "key": "C", "text": "概論資料夾中的歷屆試題 PDF。" },
+        { "key": "D", "text": "只抽取最新建立的單一檔案。" }
+      ],
+      "answer": "C",
+      "explanation": "每個科目會先對應自己的資料夾，再依年度、第一次或第二次抽題。",
+      "tags": ["科目分類"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-intro-002",
+      "subject": "概論",
+      "year": 112,
+      "session": "第二次",
+      "sourceFile": "概論/112第二次概論.pdf",
+      "answerFile": "解答/112第二次/112第二次概論解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "基礎",
+      "stem": "示範題：交卷後，系統應把答錯題目放到哪裡？",
+      "options": [
+        { "key": "A", "text": "錯題本。" },
+        { "key": "B", "text": "原始 PDF 檔名。" },
+        { "key": "C", "text": "科目選單。" },
+        { "key": "D", "text": "測驗時間區塊。" }
+      ],
+      "answer": "A",
+      "explanation": "答錯題目會保留到本機錯題本，之後可以依科目再次練習。",
+      "tags": ["錯題本"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-tech-001",
+      "subject": "技術學",
+      "year": 115,
+      "session": "第一次",
+      "sourceFile": "技術學/115第一次技術學.pdf",
+      "answerFile": "解答/115第一次/115第一次技術學解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：若選擇混合年度，系統會如何抽題？",
+      "options": [
+        { "key": "A", "text": "在同一科目的多個年度與次別中隨機抽題。" },
+        { "key": "B", "text": "只抽取 115 年第一次。" },
+        { "key": "C", "text": "只顯示已做錯的題目。" },
+        { "key": "D", "text": "只讀取答案，不顯示題目。" }
+      ],
+      "answer": "A",
+      "explanation": "混合年度會保留來源檔案資訊，方便事後回到原 PDF 核對。",
+      "tags": ["抽題"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-tech-002",
+      "subject": "技術學",
+      "year": 106,
+      "session": "第一次",
+      "sourceFile": "技術學/106第一次技術學..pdf",
+      "answerFile": "解答/106第一次/106第一次技術學解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "進階",
+      "stem": "示範題：匯入工具遇到檔名有額外符號時，應優先使用什麼資訊配對？",
+      "options": [
+        { "key": "A", "text": "檔案大小。" },
+        { "key": "B", "text": "年度、次別與科目別名。" },
+        { "key": "C", "text": "資料夾顏色。" },
+        { "key": "D", "text": "最後開啟時間。" }
+      ],
+      "answer": "B",
+      "explanation": "檔名可能有異體字或額外符號，所以匯入時會先抽出年度、次別與科目別名來配對。",
+      "tags": ["配對", "匯入流程"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-neuro-001",
+      "subject": "神經",
+      "year": 112,
+      "session": "第二次",
+      "sourceFile": "神經/112第二次神經.pdf",
+      "answerFile": "解答/112第二次/112第二次神經解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：錯題本會依哪個欄位保留複習分類？",
+      "options": [
+        { "key": "A", "text": "只依作答時間。" },
+        { "key": "B", "text": "只依題號。" },
+        { "key": "C", "text": "只依檔案大小。" },
+        { "key": "D", "text": "依科目、年度、次別與題號。" }
+      ],
+      "answer": "D",
+      "explanation": "錯題本會保留科目與來源，之後可以單獨複習神經、骨科或其他科目。",
+      "tags": ["錯題本"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-neuro-002",
+      "subject": "神經",
+      "year": 115,
+      "session": "第一次",
+      "sourceFile": "神經/115第一次神經考題.pdf",
+      "answerFile": "解答/115第一次/115第一次神經解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "基礎",
+      "stem": "示範題：搜尋題庫時，哪個條件可以快速縮小神經科題目範圍？",
+      "options": [
+        { "key": "A", "text": "科目。" },
+        { "key": "B", "text": "頁面背景色。" },
+        { "key": "C", "text": "按鈕順序。" },
+        { "key": "D", "text": "瀏覽器縮放比例。" }
+      ],
+      "answer": "A",
+      "explanation": "題庫搜尋會支援科目、年度、次別、關鍵字與錯題狀態。",
+      "tags": ["搜尋"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-ortho-001",
+      "subject": "骨科",
+      "year": 111,
+      "session": "第一次",
+      "sourceFile": "骨科/111第一次骨科.pdf",
+      "answerFile": "解答/111第一次/111第一次骨科解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：題庫搜尋頁可以用什麼條件篩選？",
+      "options": [
+        { "key": "A", "text": "只能用檔名搜尋。" },
+        { "key": "B", "text": "科目、年度、次別、關鍵字與錯題狀態。" },
+        { "key": "C", "text": "只能用答案搜尋。" },
+        { "key": "D", "text": "不能篩選，只能隨機抽題。" }
+      ],
+      "answer": "B",
+      "explanation": "正式程式會讓搜尋、模擬考、錯題本都共用同一份題庫資料。",
+      "tags": ["搜尋"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-ortho-002",
+      "subject": "骨科",
+      "year": 115,
+      "session": "第一次",
+      "sourceFile": "骨科/115第一次骨科考題.pdf",
+      "answerFile": "解答/115第一次/115第一次骨科解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "基礎",
+      "stem": "示範題：產生模擬考時，為什麼要避免同一份試卷重複抽到同題？",
+      "options": [
+        { "key": "A", "text": "讓測驗覆蓋更多題目。" },
+        { "key": "B", "text": "讓題號按檔案大小排序。" },
+        { "key": "C", "text": "讓答案檔更小。" },
+        { "key": "D", "text": "讓頁面不需要計時。" }
+      ],
+      "answer": "A",
+      "explanation": "同一份試卷不重複抽題，才比較能反映實際練習狀況。",
+      "tags": ["抽題"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-cardio-child-001",
+      "subject": "心肺加小兒",
+      "year": 110,
+      "session": "第二次",
+      "sourceFile": "心肺加小兒/110第二次心兒.pdf",
+      "answerFile": "解答/110第二次/110第二次心兒解答.pdf",
+      "sourceQuestionNumber": "示範 1",
+      "difficulty": "中等",
+      "stem": "示範題：解答資料夾在題庫中主要用來做什麼？",
+      "options": [
+        { "key": "A", "text": "對應每題答案與解析，供交卷後核對。" },
+        { "key": "B", "text": "取代題目 PDF。" },
+        { "key": "C", "text": "只用來計算檔案大小。" },
+        { "key": "D", "text": "只用來顯示資料夾清單。" }
+      ],
+      "answer": "A",
+      "explanation": "試題與解答會用年度、第一次或第二次，以及科目名稱做配對。",
+      "tags": ["解答配對"],
+      "isDemo": true
+    },
+    {
+      "id": "demo-cardio-child-002",
+      "subject": "心肺加小兒",
+      "year": 115,
+      "session": "第一次",
+      "sourceFile": "心肺加小兒/115第一次心肺加小兒.pdf",
+      "answerFile": "解答/115第一次/115第一次心兒解答.pdf",
+      "sourceQuestionNumber": "示範 2",
+      "difficulty": "進階",
+      "stem": "示範題：同一科目有簡稱時，匯入工具應如何處理？",
+      "options": [
+        { "key": "A", "text": "建立別名對應，例如心肺加小兒與心兒。" },
+        { "key": "B", "text": "略過該科目。" },
+        { "key": "C", "text": "把它歸到骨科。" },
+        { "key": "D", "text": "只留下解答檔。" }
+      ],
+      "answer": "A",
+      "explanation": "心肺加小兒的檔名常使用心兒簡稱，匯入工具會用別名表配對。",
+      "tags": ["配對", "別名"],
+      "isDemo": true
+    }
+  ]
+}
