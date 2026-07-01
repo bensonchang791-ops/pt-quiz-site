@@ -1,0 +1,1188 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-30T15:58:40.926517+00:00",
+  "root": "/Users/s.j.s.ts/Documents/國考",
+  "pdfTextExtractor": null,
+  "totals": {
+    "subjects": 6,
+    "questionPdfs": 126,
+    "pairedQuestionPdfs": 126,
+    "answerPdfs": 126,
+    "issues": 0
+  },
+  "subjects": [
+    {
+      "name": "國考基礎學",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    },
+    {
+      "name": "概論",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    },
+    {
+      "name": "技術學",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    },
+    {
+      "name": "神經",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    },
+    {
+      "name": "骨科",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    },
+    {
+      "name": "心肺加小兒",
+      "questionPdfs": 21,
+      "pairedQuestionPdfs": 21,
+      "answerPdfs": 21
+    }
+  ],
+  "documents": [
+    {
+      "subject": "國考基礎學",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/105第一次基礎學.pdf",
+      "answerPdf": "解答/105第一次/105第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/105第二次基礎學.pdf",
+      "answerPdf": "解答/105第二次/105第二次基礎學答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/106第一次基礎學.pdf",
+      "answerPdf": "解答/106第一次/106第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/106第二次基礎學.pdf",
+      "answerPdf": "解答/106第二次/106第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/107第一次基礎學.pdf",
+      "answerPdf": "解答/107第一次/107第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/107第二次基礎學.pdf",
+      "answerPdf": "解答/107第二次/107第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/108第一次基礎學.pdf",
+      "answerPdf": "解答/108第一次/108第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/108第二次基礎學.pdf",
+      "answerPdf": "解答/108第二次/108第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/109第一次基礎學.pdf",
+      "answerPdf": "解答/109第一次/109第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/109第二次基礎學.pdf",
+      "answerPdf": "解答/109第二次/109第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/110第一次基礎學.pdf",
+      "answerPdf": "解答/110第一次/110第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/110第二次基礎學.pdf",
+      "answerPdf": "解答/110第二次/110第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/111第一次基礎學.pdf",
+      "answerPdf": "解答/111第一次/111第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/111第二次基礎學.pdf",
+      "answerPdf": "解答/111第二次/111第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/112第ㄧ次基礎學.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/112第二次基礎學.pdf",
+      "answerPdf": "解答/112第二次/112第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/113第一次基礎學.pdf",
+      "answerPdf": "解答/113第一次/113第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/113第二次基礎學.pdf",
+      "answerPdf": "解答/113第二次/113第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/114第一次基礎學.pdf",
+      "answerPdf": "解答/114第一次/114第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "國考基礎學/114第二次基礎學.pdf",
+      "answerPdf": "解答/114第二次/114第二次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "國考基礎學",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "國考基礎學/115年第一次基礎學.pdf",
+      "answerPdf": "解答/115第一次/115第一次基礎學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "概論/105第一次概論.pdf",
+      "answerPdf": "解答/105第一次/105第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "概論/105第二次概論.pdf",
+      "answerPdf": "解答/105第二次/105第二次概論答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "概論/106第一次概論.pdf",
+      "answerPdf": "解答/106第一次/106第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "概論/106第二次概論.pdf",
+      "answerPdf": "解答/106第二次/106第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "概論/107第一次概論.pdf",
+      "answerPdf": "解答/107第一次/107第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "概論/107第二次概論.pdf",
+      "answerPdf": "解答/107第二次/107第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "概論/108第一次概論.pdf",
+      "answerPdf": "解答/108第一次/108第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "概論/108第二次概論.pdf",
+      "answerPdf": "解答/108第二次/108第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "概論/109第一次概論.pdf",
+      "answerPdf": "解答/109第一次/109第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "概論/109第二次概論.pdf",
+      "answerPdf": "解答/109第二次/109第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "概論/110第一次概論.pdf",
+      "answerPdf": "解答/110第一次/110第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "概論/110第二次概論.pdf",
+      "answerPdf": "解答/110第二次/110第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "概論/111第一次概論.pdf",
+      "answerPdf": "解答/111第一次/111第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "概論/111第二次概論.pdf",
+      "answerPdf": "解答/111第二次/111第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "概論/112第ㄧ次概論.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "概論/112第二次概論.pdf",
+      "answerPdf": "解答/112第二次/112第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "概論/113第一次概論.pdf",
+      "answerPdf": "解答/113第一次/113第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "概論/113第二次概論.pdf",
+      "answerPdf": "解答/113第二次/113第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "概論/114第一次概論.pdf",
+      "answerPdf": "解答/114第一次/114第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "概論/114第二次概論.pdf",
+      "answerPdf": "解答/114第二次/114第二次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "概論",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "概論/115第一次概論.pdf",
+      "answerPdf": "解答/115第一次/115第一次概論解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "技術學/105第一次技術學.pdf",
+      "answerPdf": "解答/105第一次/105第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "技術學/105第二次技術學.pdf",
+      "answerPdf": "解答/105第二次/105第二次技術學答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "技術學/106第一次技術學..pdf",
+      "answerPdf": "解答/106第一次/106第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "技術學/106第二次技術學.pdf",
+      "answerPdf": "解答/106第二次/106第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "技術學/107第一次技術學.pdf",
+      "answerPdf": "解答/107第一次/107第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "技術學/107第二次技術學.pdf",
+      "answerPdf": "解答/107第二次/107第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "技術學/108第一次技術學.pdf",
+      "answerPdf": "解答/108第一次/108第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "技術學/108第二次技術學.pdf",
+      "answerPdf": "解答/108第二次/108第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "技術學/109第一次技術學.pdf",
+      "answerPdf": "解答/109第一次/109第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "技術學/109第二次技術學.pdf",
+      "answerPdf": "解答/109第二次/109第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "技術學/110第一次技術學.pdf",
+      "answerPdf": "解答/110第一次/110第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "技術學/110第二次技術學.pdf",
+      "answerPdf": "解答/110第二次/110第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "技術學/111第一次技術學.pdf",
+      "answerPdf": "解答/111第一次/111第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "技術學/111第二次技術學.pdf",
+      "answerPdf": "解答/111第二次/111第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "技術學/112第ㄧ次技術學.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "技術學/112第二次技術學.pdf",
+      "answerPdf": "解答/112第二次/112第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "技術學/113第一次技術學.pdf",
+      "answerPdf": "解答/113第一次/113第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "技術學/113第二次技術學.pdf",
+      "answerPdf": "解答/113第二次/113第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "技術學/114第一次技術學.pdf",
+      "answerPdf": "解答/114第一次/114第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "技術學/114第二次技術學pdf.pdf",
+      "answerPdf": "解答/114第二次/114第二次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "技術學",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "技術學/115第一次技術學.pdf",
+      "answerPdf": "解答/115第一次/115第一次技術學解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "神經/105第一次神經.pdf",
+      "answerPdf": "解答/105第一次/105第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "神經/105第二次神經.pdf",
+      "answerPdf": "解答/105第二次/105第二次神經答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "神經/106第一次神經.pdf",
+      "answerPdf": "解答/106第一次/106第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "神經/106第二次神經.pdf",
+      "answerPdf": "解答/106第二次/106第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "神經/107第一次神經.pdf",
+      "answerPdf": "解答/107第一次/107第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "神經/107第二次神經.pdf",
+      "answerPdf": "解答/107第二次/107第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "神經/108第一次神經.pdf",
+      "answerPdf": "解答/108第一次/108第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "神經/108第二次神經.pdf",
+      "answerPdf": "解答/108第二次/108第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "神經/109第一次神經.pdf",
+      "answerPdf": "解答/109第一次/109第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "神經/109第二次神經.pdf",
+      "answerPdf": "解答/109第二次/109第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "神經/110第一次神經.pdf",
+      "answerPdf": "解答/110第一次/110第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "神經/110第二次神經.pdf",
+      "answerPdf": "解答/110第二次/110第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "神經/111第一次神經.pdf",
+      "answerPdf": "解答/111第一次/111第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "神經/111第二次神經.pdf",
+      "answerPdf": "解答/111第二次/111第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "神經/112第ㄧ次神經.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "神經/112第二次神經.pdf",
+      "answerPdf": "解答/112第二次/112第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "神經/113第一次神經.pdf",
+      "answerPdf": "解答/113第一次/113第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "神經/113第二次神經.pdf",
+      "answerPdf": "解答/113第二次/113第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "神經/114第一次神經.pdf",
+      "answerPdf": "解答/114第一次/114第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "神經/114第二次神經.pdf",
+      "answerPdf": "解答/114第二次/114第二次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "神經",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "神經/115第一次神經考題.pdf",
+      "answerPdf": "解答/115第一次/115第一次神經解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "骨科/105第一次骨科.pdf",
+      "answerPdf": "解答/105第一次/105第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "骨科/105第二次骨科.pdf",
+      "answerPdf": "解答/105第二次/105第二次骨科答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "骨科/106第一次骨科.pdf",
+      "answerPdf": "解答/106第一次/106第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "骨科/106第二次骨科.pdf",
+      "answerPdf": "解答/106第二次/106第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "骨科/107第一次骨科.pdf",
+      "answerPdf": "解答/107第一次/107第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "骨科/107第二次骨科.pdf",
+      "answerPdf": "解答/107第二次/107第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "骨科/108第一次骨科.pdf",
+      "answerPdf": "解答/108第一次/108第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "骨科/108第二次骨科.pdf",
+      "answerPdf": "解答/108第二次/108第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "骨科/109第一次骨科.pdf",
+      "answerPdf": "解答/109第一次/109第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "骨科/109第二次骨科.pdf",
+      "answerPdf": "解答/109第二次/109第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "骨科/110第一次骨科.pdf",
+      "answerPdf": "解答/110第一次/110第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "骨科/110第二次骨科.pdf",
+      "answerPdf": "解答/110第二次/110第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "骨科/111第一次骨科.pdf",
+      "answerPdf": "解答/111第一次/111第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "骨科/111第二次骨科.pdf",
+      "answerPdf": "解答/111第二次/111第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "骨科/112第ㄧ次骨科.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "骨科/112第二次骨科.pdf",
+      "answerPdf": "解答/112第二次/112第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "骨科/113第一次骨科.pdf",
+      "answerPdf": "解答/113第一次/113第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "骨科/113第二次骨科.pdf",
+      "answerPdf": "解答/113第二次/113第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "骨科/114第一次骨科.pdf",
+      "answerPdf": "解答/114第一次/114第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "骨科/114第二次骨科.pdf",
+      "answerPdf": "解答/114第二次/114第二次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "骨科",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "骨科/115第一次骨科考題.pdf",
+      "answerPdf": "解答/115第一次/115第一次骨科解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 105,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/105第一次心兒.pdf",
+      "answerPdf": "解答/105第一次/105第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 105,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/105第二次心兒.pdf",
+      "answerPdf": "解答/105第二次/105第二次心兒答案.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 106,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/106第一次心兒.pdf",
+      "answerPdf": "解答/106第一次/106第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 106,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/106第二次心兒.pdf",
+      "answerPdf": "解答/106第二次/106第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 107,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/107第一次心兒.pdf",
+      "answerPdf": "解答/107第一次/107第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 107,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/107第二次心兒.pdf",
+      "answerPdf": "解答/107第二次/107第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 108,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/108第一次心兒.pdf",
+      "answerPdf": "解答/108第一次/108第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 108,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/108第二次心兒.pdf",
+      "answerPdf": "解答/108第二次/108第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 109,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/109第一次心兒.pdf",
+      "answerPdf": "解答/109第一次/109第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 109,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/109第二次心兒.pdf",
+      "answerPdf": "解答/109第二次/109第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 110,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/110第一次心兒.pdf",
+      "answerPdf": "解答/110第一次/110第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 110,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/110第二次心兒.pdf",
+      "answerPdf": "解答/110第二次/110第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 111,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/111第一次心兒.pdf",
+      "answerPdf": "解答/111第一次/111第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 111,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/111第二次心兒.pdf",
+      "answerPdf": "解答/111第二次/111第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 112,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/112第ㄧ次心兒.pdf",
+      "answerPdf": "解答/112第一次/112第ㄧ次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 112,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/112第二次心兒.pdf",
+      "answerPdf": "解答/112第二次/112第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 113,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/113第一次心兒.pdf",
+      "answerPdf": "解答/113第一次/113第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 113,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/113第二次心兒.pdf",
+      "answerPdf": "解答/113第二次/113第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 114,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/114第一次心兒.pdf",
+      "answerPdf": "解答/114第一次/114第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 114,
+      "session": "第二次",
+      "questionPdf": "心肺加小兒/114第二次心兒.pdf",
+      "answerPdf": "解答/114第二次/114第二次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    },
+    {
+      "subject": "心肺加小兒",
+      "year": 115,
+      "session": "第一次",
+      "questionPdf": "心肺加小兒/115第一次心肺加小兒.pdf",
+      "answerPdf": "解答/115第一次/115第一次心兒解答.pdf",
+      "paired": true,
+      "textStatus": "pending"
+    }
+  ],
+  "issues": []
+}
