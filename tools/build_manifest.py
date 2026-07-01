@@ -151,7 +151,7 @@ def build_manifest() -> dict:
     return {
         "schemaVersion": 1,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "root": str(ROOT),
+        "root": ".",
         "pdfTextExtractor": shutil.which("pdftotext") or None,
         "totals": totals,
         "subjects": subject_rows,
