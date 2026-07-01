@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>國考題庫</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>國考題庫</h1>
+          <p>歷屆試題練習系統</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="主選單">
+        <button class="active" type="button" data-view="exam"><span>▦</span>模擬考</button>
+        <button type="button" data-view="wrong"><span>✓</span>錯題本</button>
+        <button type="button" data-view="search"><span>⌕</span>題庫搜尋</button>
+        <button type="button" data-view="import"><span>↥</span>匯入狀態</button>
+      </nav>
+
+      <section class="side-section" aria-label="題庫統計">
+        <div class="side-title">目前題庫</div>
+        <div class="side-stat"><span>科目數</span><strong id="subjectTotal">6</strong></div>
+        <div class="side-stat"><span>試題檔案</span><strong id="paperTotal">--</strong></div>
+        <div class="side-stat"><span>解答檔案</span><strong id="answerTotal">--</strong></div>
+        <div class="progress"><span id="pairProgress"></span></div>
+      </section>
+
+      <section class="side-section" aria-label="練習統計">
+        <div class="side-title">本機紀錄</div>
+        <div class="side-stat"><span>完成試卷</span><strong id="historyTotal">0</strong></div>
+        <div class="side-stat"><span>錯題數</span><strong id="wrongTotal">0</strong></div>
+        <div class="side-stat"><span>平均分數</span><strong id="avgScore">--</strong></div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">模擬考產生器</h2>
+          <p id="pageSubtitle">依科目、年度與題數抽題，完成後保留錯題紀錄。</p>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" type="button" id="wrongPracticeBtn">錯題練習</button>
+          <button class="icon-btn" type="button" id="printBtn" title="列印試卷" aria-label="列印試卷">⎙</button>
+          <button class="primary-btn" type="button" id="newExamBtn">產生試卷</button>
+        </div>
+      </header>
+
+      <section class="view active" id="examView">
+        <section class="builder-panel">
+          <div class="panel-title">
+            <div>
+              <h3>出題設定</h3>
+              <p id="buildStatus">尚未開始</p>
+            </div>
+            <span id="availableCount">-- 題可用</span>
+          </div>
+
+          <div class="builder-grid">
+            <label class="field">
+              <span>科目</span>
+              <select id="subjectSelect"></select>
+            </label>
+            <label class="field">
+              <span>年度</span>
+              <select id="yearSelect"></select>
+            </label>
+            <label class="field">
+              <span>題數</span>
+              <input id="countInput" type="number" min="1" max="80" value="10">
+            </label>
+            <div class="field">
+              <span>模式</span>
+              <div class="segmented" role="group" aria-label="模式">
+                <button class="active" type="button" data-mode="exam">考試</button>
+                <button type="button" data-mode="practice">練習</button>
+                <button type="button" data-mode="wrong">錯題</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="exam-layout">
+          <section class="question-panel">
+            <div class="panel-title question-head">
+              <div>
+                <h3 id="questionNumber">第 1 題</h3>
+                <p id="questionProgress">1 / 10</p>
+              </div>
+              <button class="ghost-btn" type="button" id="markBtn">標記</button>
+            </div>
+
+            <div class="meta-row" id="questionMeta"></div>
+            <h3 class="question-title" id="questionText"></h3>
+            <div class="options" id="options"></div>
+
+            <div class="question-actions">
+              <button class="ghost-btn" type="button" id="prevBtn">上一題</button>
+              <div class="top-actions">
+                <button class="ghost-btn" type="button" id="answerBtn">看解析</button>
+                <button class="primary-btn" type="button" id="nextBtn">下一題</button>
+              </div>
+            </div>
+
+            <section class="answer-panel" id="answerPanel">
+              <h4 id="answerTitle">答案</h4>
+              <p id="answerText"></p>
+            </section>
+          </section>
+
+          <aside class="status-panel">
+            <section class="timer-panel">
+              <div>
+                <span>測驗時間</span>
+                <strong id="timerText">00:00</strong>
+              </div>
+              <button class="icon-btn" type="button" id="timerBtn" title="暫停計時" aria-label="暫停計時">Ⅱ</button>
+            </section>
+
+            <section class="mini-stats">
+              <div><strong id="doneCount">0</strong><span>已答</span></div>
+              <div><strong id="markedCount">0</strong><span>標記</span></div>
+              <div><strong id="examCount">10</strong><span>題數</span></div>
+            </section>
+
+            <div class="panel-title compact">
+              <div>
+                <h3>題號</h3>
+                <p id="mapStatus">尚未作答</p>
+              </div>
+            </div>
+            <div class="question-map" id="questionMap"></div>
+            <button class="primary-btn full" type="button" id="submitBtn">交卷並計分</button>
+
+            <section class="score-panel">
+              <div><span>分數</span><strong id="scoreText">--</strong></div>
+              <div><span>答錯</span><strong id="wrongCountText">--</strong></div>
+              <div><span>複習</span><strong id="reviewText">尚未交卷</strong></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="wrongView">
+        <section class="table-panel">
+          <div class="panel-title">
+            <div>
+              <h3>錯題本</h3>
+              <p id="wrongSubtitle">本機保留的答錯題目</p>
+            </div>
+            <button class="ghost-btn" type="button" id="clearWrongBtn">清空錯題</button>
+          </div>
+          <div class="item-list" id="wrongList"></div>
+        </section>
+      </section>
+
+      <section class="view" id="searchView">
+        <section class="builder-panel">
+          <div class="panel-title">
+            <div>
+              <h3>題庫搜尋</h3>
+              <p id="searchCount">--</p>
+            </div>
+          </div>
+          <div class="builder-grid search-grid">
+            <label class="field">
+              <span>科目</span>
+              <select id="searchSubject"></select>
+            </label>
+            <label class="field">
+              <span>關鍵字</span>
+              <input id="searchInput" type="search" placeholder="輸入題目、標籤或來源">
+            </label>
+          </div>
+        </section>
+        <section class="table-panel">
+          <div class="item-list" id="searchResults"></div>
+        </section>
+      </section>
+
+      <section class="view" id="importView">
+        <section class="builder-panel">
+          <div class="panel-title">
+            <div>
+              <h3>匯入狀態</h3>
+              <p id="importSubtitle">讀取來源資料夾與解答配對狀態</p>
+            </div>
+            <button class="ghost-btn" type="button" id="reloadBtn">重新讀取</button>
+          </div>
+          <div class="import-grid" id="importGrid"></div>
+        </section>
+
+        <section class="table-panel">
+          <div class="panel-title">
+            <div>
+              <h3>需要校正</h3>
+              <p id="issueCount">--</p>
+            </div>
+          </div>
+          <div class="item-list" id="issueList"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
