@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-01T02:30:50.113510+00:00",
+  "generatedAt": "2026-07-01T10:44:44.897645+00:00",
   "root": ".",
   "pdfTextExtractor": null,
   "totals": {
@@ -8,46 +8,53 @@
     "questionPdfs": 126,
     "pairedQuestionPdfs": 126,
     "answerPdfs": 126,
-    "issues": 19,
-    "questions": 10061,
-    "documentsExtracted": 114
+    "issues": 0,
+    "questions": 10080,
+    "imageQuestions": 19,
+    "documentsExtracted": 126
   },
   "subjects": [
     {
       "name": "國考基礎學",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 2
     },
     {
       "name": "概論",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 0
     },
     {
       "name": "技術學",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 8
     },
     {
       "name": "神經",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 6
     },
     {
       "name": "骨科",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 2
     },
     {
       "name": "心肺加小兒",
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
-      "answerPdfs": 21
+      "answerPdfs": 21,
+      "imageQuestionCount": 1
     }
   ],
   "documents": [
@@ -61,7 +68,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -70,10 +78,11 @@
       "questionPdf": "國考基礎學/105第二次基礎學.pdf",
       "answerPdf": "解答/105第二次/105第二次基礎學答案.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "國考基礎學",
@@ -85,7 +94,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -97,7 +107,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -109,7 +120,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -121,7 +133,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -133,7 +146,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -145,7 +159,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -157,7 +172,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -169,7 +185,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -181,7 +198,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -193,7 +211,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -205,7 +224,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -217,7 +237,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -229,7 +250,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -241,7 +263,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -253,7 +276,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -265,7 +289,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -277,7 +302,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -289,7 +315,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "國考基礎學",
@@ -298,10 +325,11 @@
       "questionPdf": "國考基礎學/115年第一次基礎學.pdf",
       "answerPdf": "解答/115第一次/115第一次基礎學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "概論",
@@ -313,7 +341,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -325,7 +354,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -337,7 +367,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -349,7 +380,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -361,7 +393,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -373,7 +406,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -385,7 +419,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -397,7 +432,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -409,7 +445,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -421,7 +458,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -433,7 +471,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -445,7 +484,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -457,7 +497,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -469,7 +510,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -481,7 +523,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -493,7 +536,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -505,7 +549,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -517,7 +562,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -529,7 +575,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -541,7 +588,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "概論",
@@ -553,7 +601,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -562,10 +611,11 @@
       "questionPdf": "技術學/105第一次技術學.pdf",
       "answerPdf": "解答/105第一次/105第一次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "技術學",
@@ -577,7 +627,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -589,7 +640,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -598,10 +650,11 @@
       "questionPdf": "技術學/106第二次技術學.pdf",
       "answerPdf": "解答/106第二次/106第二次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "技術學",
@@ -613,7 +666,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -622,10 +676,11 @@
       "questionPdf": "技術學/107第二次技術學.pdf",
       "answerPdf": "解答/107第二次/107第二次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 78
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 2
     },
     {
       "subject": "技術學",
@@ -637,7 +692,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -649,7 +705,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -661,7 +718,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -673,7 +731,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -682,10 +741,11 @@
       "questionPdf": "技術學/110第一次技術學.pdf",
       "answerPdf": "解答/110第一次/110第一次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "技術學",
@@ -697,7 +757,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -709,7 +770,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -718,10 +780,11 @@
       "questionPdf": "技術學/111第二次技術學.pdf",
       "answerPdf": "解答/111第二次/111第二次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "技術學",
@@ -733,7 +796,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -745,7 +809,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -757,7 +822,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -769,7 +835,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -778,10 +845,11 @@
       "questionPdf": "技術學/114第一次技術學.pdf",
       "answerPdf": "解答/114第一次/114第一次技術學解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 78
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 2
     },
     {
       "subject": "技術學",
@@ -793,7 +861,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "技術學",
@@ -805,7 +874,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -817,7 +887,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -829,7 +900,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -841,7 +913,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -853,7 +926,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -865,7 +939,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -877,7 +952,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -889,7 +965,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -901,7 +978,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -913,7 +991,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -925,7 +1004,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -937,7 +1017,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -949,7 +1030,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -961,7 +1043,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -973,7 +1056,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -985,7 +1069,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -997,7 +1082,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -1006,10 +1092,11 @@
       "questionPdf": "神經/113第一次神經.pdf",
       "answerPdf": "解答/113第一次/113第一次神經解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 74
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 6
     },
     {
       "subject": "神經",
@@ -1021,7 +1108,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -1033,7 +1121,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -1045,7 +1134,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "神經",
@@ -1057,7 +1147,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1069,7 +1160,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1081,7 +1173,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1093,7 +1186,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1105,7 +1199,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1117,7 +1212,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1129,7 +1225,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1141,7 +1238,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1153,7 +1251,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1165,7 +1264,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1177,7 +1277,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1186,10 +1287,11 @@
       "questionPdf": "骨科/110第一次骨科.pdf",
       "answerPdf": "解答/110第一次/110第一次骨科解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "骨科",
@@ -1201,7 +1303,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1213,7 +1316,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1225,7 +1329,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1237,7 +1342,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1249,7 +1355,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1261,7 +1368,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1273,7 +1381,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1285,7 +1394,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "骨科",
@@ -1294,10 +1404,11 @@
       "questionPdf": "骨科/114第二次骨科.pdf",
       "answerPdf": "解答/114第二次/114第二次骨科解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "骨科",
@@ -1309,7 +1420,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1321,7 +1433,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1333,7 +1446,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1345,7 +1459,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1354,10 +1469,11 @@
       "questionPdf": "心肺加小兒/106第二次心兒.pdf",
       "answerPdf": "解答/106第二次/106第二次心兒解答.pdf",
       "paired": true,
-      "textStatus": "needs-review",
+      "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 79
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 1
     },
     {
       "subject": "心肺加小兒",
@@ -1369,7 +1485,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1381,7 +1498,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1393,7 +1511,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1405,7 +1524,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1417,7 +1537,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1429,7 +1550,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1441,7 +1563,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1453,7 +1576,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1465,7 +1589,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1477,7 +1602,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1489,7 +1615,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1501,7 +1628,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1513,7 +1641,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1525,7 +1654,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1537,7 +1667,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1549,7 +1680,8 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     },
     {
       "subject": "心肺加小兒",
@@ -1561,104 +1693,9 @@
       "textStatus": "complete",
       "questionCount": 80,
       "answerCount": 80,
-      "usableQuestionCount": 80
+      "usableQuestionCount": 80,
+      "imageQuestionCount": 0
     }
   ],
-  "issues": [
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "國考基礎學/105第二次基礎學.pdf / 解答/105第二次/105第二次基礎學答案.pdf：第 72 題：D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "國考基礎學/115年第一次基礎學.pdf / 解答/115第一次/115第一次基礎學解答.pdf：第 80 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/105第一次技術學.pdf / 解答/105第一次/105第一次技術學解答.pdf：第 73 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/106第二次技術學.pdf / 解答/106第二次/106第二次技術學解答.pdf：第 78 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/107第二次技術學.pdf / 解答/107第二次/107第二次技術學解答.pdf：第 74 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/107第二次技術學.pdf / 解答/107第二次/107第二次技術學解答.pdf：第 76 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/110第一次技術學.pdf / 解答/110第一次/110第一次技術學解答.pdf：第 46 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/111第二次技術學.pdf / 解答/111第二次/111第二次技術學解答.pdf：第 47 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/114第一次技術學.pdf / 解答/114第一次/114第一次技術學解答.pdf：第 48 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "技術學/114第一次技術學.pdf / 解答/114第一次/114第一次技術學解答.pdf：第 49 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 2 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 8 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 31 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 44 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 59 題：A 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "神經/113第一次神經.pdf / 解答/113第一次/113第一次神經解答.pdf：第 71 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "骨科/110第一次骨科.pdf / 解答/110第一次/110第一次骨科解答.pdf：第 29 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "骨科/114第二次骨科.pdf / 解答/114第二次/114第二次骨科解答.pdf：第 28 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    },
-    {
-      "type": "question-option-text-missing",
-      "title": "選項文字需要人工校正",
-      "detail": "心肺加小兒/106第二次心兒.pdf / 解答/106第二次/106第二次心兒解答.pdf：第 26 題：A, B, C, D 選項沒有文字，可能是圖片或表格題"
-    }
-  ]
+  "issues": []
 }
