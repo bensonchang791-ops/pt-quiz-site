@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local preview artifacts
+quiz-site-preview.png
+題庫程式頁面原型.html
+題庫程式頁面原型.png
+
+# Original PDF folders stay local unless Benson explicitly decides otherwise.
+國考基礎學/
+概論/
+技術學/
+神經/
+骨科/
+心肺加小兒/
+解答/
+
+# Temporary local server or editor files
+*.log
+*.tmp
