@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "encoding": "gzip+base64",
+  "source": "question-bank.json",
+  "parts": [
+    "question-bank.part01.b64",
+    "question-bank.part02.b64",
+    "question-bank.part03.b64",
+    "question-bank.part04.b64",
+    "question-bank.part05.b64",
+    "question-bank.part06.b64",
+    "question-bank.part07.b64",
+    "question-bank.part08.b64"
+  ],
+  "uncompressedBytes": 8308757,
+  "compressedBase64Bytes": 2142376
+}
