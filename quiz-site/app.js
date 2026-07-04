@@ -4,6 +4,15 @@ const MANIFEST_PATH = "data/source-manifest.json";
 const WRONG_KEY = "examWrongItems.v1";
 const HISTORY_KEY = "examHistory.v1";
 const NOTES_KEY = "examQuestionNotes.v1";
+const MEDIA_PATCHES = {
+  "basic-112-1-076": [
+    {
+      type: "image",
+      src: "data/question-images/basic-112-1-076-01.svg",
+      alt: "國考基礎學 112年第一次第 76 題圖 1"
+    }
+  ]
+};
 
 const state = {
   bank: { subjects: [], questions: [] },
@@ -14,6 +23,7 @@ const state = {
   answers: {},
   marked: new Set(),
   submitted: false,
+  activeHistoryId: "",
   elapsedSeconds: 0,
   timerId: null,
   timerRunning: true
@@ -28,7 +38,9 @@ const dom = {
   subjectSelect: $("#subjectSelect"),
   startYearSelect: $("#startYearSelect"),
   endYearSelect: $("#endYearSelect"),
+  sessionSelect: $("#sessionSelect"),
   countInput: $("#countInput"),
+  orderSelect: $("#orderSelect"),
   availableCount: $("#availableCount"),
   buildStatus: $("#buildStatus"),
   questionPanel: $(".question-panel"),
@@ -59,6 +71,11 @@ const dom = {
   searchCount: $("#searchCount"),
   wrongList: $("#wrongList"),
   wrongSubtitle: $("#wrongSubtitle"),
+  historySubject: $("#historySubject"),
+  historySubtitle: $("#historySubtitle"),
+  historySummary: $("#historySummary"),
+  historyList: $("#historyList"),
+  historyDetail: $("#historyDetail"),
   importGrid: $("#importGrid"),
   issueList: $("#issueList"),
   issueCount: $("#issueCount"),
@@ -121,15 +138,22 @@ function saveStore(key, value) {
 }
 
 function normalizeQuestions(questions) {
-  return questions.map((question) => ({
-    ...question,
-    tags: Array.isArray(question.tags) ? question.tags : [],
-    options: Array.isArray(question.options) ? question.options : [],
-    media: Array.isArray(question.media) ? question.media : [],
-    acceptedAnswers: Array.isArray(question.acceptedAnswers) && question.acceptedAnswers.length
-      ? question.acceptedAnswers
-      : [question.answer].filter(Boolean)
-  }));
+  return questions.map((question) => {
+    const media = Array.isArray(question.media) && question.media.length
+      ? question.media
+      : MEDIA_PATCHES[question.id] || [];
+
+    return {
+      ...question,
+      tags: Array.isArray(question.tags) ? question.tags : [],
+      options: Array.isArray(question.options) ? question.options : [],
+      media,
+      hasImage: Boolean(question.hasImage || media.length),
+      acceptedAnswers: Array.isArray(question.acceptedAnswers) && question.acceptedAnswers.length
+        ? question.acceptedAnswers
+        : [question.answer].filter(Boolean)
+    };
+  });
 }
 
 function acceptedAnswers(question) {
@@ -144,6 +168,40 @@ function isCorrectAnswer(question, selected) {
 
 function answerLabel(question) {
   return acceptedAnswers(question).join(" / ") || question.answer || "--";
+}
+
+function questionById(questionId) {
+  return state.bank.questions.find((question) => question.id === questionId);
+}
+
+function makeHistoryId() {
+  return `paper-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function formatDateTime(value) {
+  if (!value) return "--";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "--";
+  return date.toLocaleString("zh-TW", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+}
+
+function normalizedHistory() {
+  return loadStore(HISTORY_KEY, []).map((item, index) => ({
+    ...item,
+    id: item.id || `legacy-${index}`,
+    questions: Array.isArray(item.questions) ? item.questions : []
+  }));
+}
+
+function historySubjectMatches(item, subject) {
+  return subject === "all" || item.subject === subject;
 }
 
 function allSubjects() {
@@ -176,6 +234,38 @@ function getYearRange(options = {}) {
   };
 }
 
+function selectedSession(options = {}) {
+  return options.session ?? dom.sessionSelect.value;
+}
+
+function selectedOrder() {
+  return dom.orderSelect.value || "random";
+}
+
+function selectedOrderLabel() {
+  return selectedOrder() === "source" ? "照原始題號" : "隨機出題";
+}
+
+function sessionRank(session) {
+  if (session === "第一次") return 1;
+  if (session === "第二次") return 2;
+  return 9;
+}
+
+function questionNumberValue(question) {
+  return Number(question.sourceQuestionNumber) || 0;
+}
+
+function sortBySourceOrder(questions) {
+  const subjectOrder = new Map(allSubjects().map((subject, index) => [subject, index]));
+  return [...questions].sort((a, b) => (
+    Number(a.year) - Number(b.year)
+    || sessionRank(a.session) - sessionRank(b.session)
+    || (subjectOrder.get(a.subject) ?? 999) - (subjectOrder.get(b.subject) ?? 999)
+    || questionNumberValue(a) - questionNumberValue(b)
+  ));
+}
+
 function populateControls() {
   const subjects = allSubjects();
   dom.subjectSelect.innerHTML = subjects
@@ -183,6 +273,11 @@ function populateControls() {
     .join("");
 
   dom.searchSubject.innerHTML = [
+    "<option value=\"all\">全部科目</option>",
+    ...subjects.map((subject) => `<option value="${escapeAttr(subject)}">${escapeHtml(subject)}</option>`)
+  ].join("");
+
+  dom.historySubject.innerHTML = [
     "<option value=\"all\">全部科目</option>",
     ...subjects.map((subject) => `<option value="${escapeAttr(subject)}">${escapeHtml(subject)}</option>`)
   ].join("");
@@ -244,6 +339,7 @@ function syncYearRange(changedControl) {
 function filterQuestions(options = {}) {
   const subject = options.subject ?? dom.subjectSelect.value;
   const yearRange = getYearRange(options);
+  const session = selectedSession(options);
   const mode = options.mode ?? state.mode;
   let questions = state.bank.questions;
 
@@ -263,6 +359,10 @@ function filterQuestions(options = {}) {
     ));
   }
 
+  if (session && session !== "all") {
+    questions = questions.filter((question) => question.session === session);
+  }
+
   return questions;
 }
 
@@ -279,6 +379,29 @@ function buildExam() {
   let pool = filterQuestions();
   const requestedCount = Math.max(1, Math.min(80, Number(dom.countInput.value) || 10));
 
+  if (state.mode === "year") {
+    const start = Number(dom.startYearSelect.value);
+    if (Number.isFinite(start)) {
+      dom.endYearSelect.value = String(start);
+    }
+    pool = sortBySourceOrder(filterQuestions({ mode: "exam" }));
+
+    if (!pool.length) {
+      dom.buildStatus.textContent = "目前篩選條件沒有題目";
+      return;
+    }
+
+    state.exam = pool;
+    state.current = 0;
+    state.answers = {};
+    state.marked = new Set();
+    state.submitted = false;
+    resetTimer();
+    dom.buildStatus.textContent = `已載入逐題作答 ${state.exam.length} 題`;
+    renderExam();
+    return;
+  }
+
   if (pool.length === 0 && state.mode === "wrong") {
     state.mode = "exam";
     setModeButton("exam");
@@ -290,11 +413,11 @@ function buildExam() {
     pool = state.bank.questions;
   }
 
-  const shuffled = shuffle(pool);
+  const orderedPool = selectedOrder() === "source" ? sortBySourceOrder(pool) : shuffle(pool);
   const exam = [];
-  while (exam.length < requestedCount && shuffled.length > 0) {
-    exam.push(shuffled[exam.length % shuffled.length]);
-    if (exam.length >= shuffled.length && shuffled.length < requestedCount) {
+  while (exam.length < requestedCount && orderedPool.length > 0) {
+    exam.push(orderedPool[exam.length % orderedPool.length]);
+    if (exam.length >= orderedPool.length && orderedPool.length < requestedCount) {
       break;
     }
   }
@@ -305,7 +428,7 @@ function buildExam() {
   state.marked = new Set();
   state.submitted = false;
   resetTimer();
-  dom.buildStatus.textContent = `已產生 ${state.exam.length} 題`;
+  dom.buildStatus.textContent = `已產生 ${state.exam.length} 題 · ${selectedOrderLabel()}`;
   renderExam();
 }
 
@@ -498,14 +621,33 @@ function submitExam() {
 
   const history = loadStore(HISTORY_KEY, []);
   const yearRange = getYearRange();
+  const session = selectedSession();
   history.unshift({
+    id: makeHistoryId(),
     score: result.score,
     total: state.exam.length,
     correct: result.correct,
+    wrong: result.wrong.length,
     subject: dom.subjectSelect.value,
     yearRange: yearRange.label,
+    session: session === "all" ? "全部" : session,
+    mode: state.mode,
+    order: state.mode === "year" ? "照原始題號" : selectedOrderLabel(),
     elapsedSeconds: state.elapsedSeconds,
-    finishedAt: new Date().toISOString()
+    finishedAt: new Date().toISOString(),
+    questions: state.exam.map((question, index) => {
+      const selected = state.answers[question.id] || "";
+      return {
+        index: index + 1,
+        questionId: question.id,
+        selected,
+        acceptedAnswers: acceptedAnswers(question),
+        answer: answerLabel(question),
+        isCorrect: isCorrectAnswer(question, selected),
+        marked: state.marked.has(question.id),
+        note: questionNote(question.id)
+      };
+    })
   });
 
   saveStore(WRONG_KEY, wrongStore);
@@ -513,6 +655,7 @@ function submitExam() {
   showAnswer(true);
   renderExam();
   renderWrongBook();
+  renderHistory();
   updateSideStats();
 }
 
@@ -571,6 +714,157 @@ function renderWrongBook() {
   });
 }
 
+function renderHistory() {
+  const subject = dom.historySubject.value || "all";
+  const history = normalizedHistory();
+  const filtered = history.filter((item) => historySubjectMatches(item, subject));
+  const scores = filtered.map((item) => item.score).filter((score) => Number.isFinite(score));
+  const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : "--";
+  const best = scores.length ? Math.max(...scores) : "--";
+  const totalWrong = filtered.reduce((sum, item) => sum + (Number(item.wrong) || Math.max(0, (Number(item.total) || 0) - (Number(item.correct) || 0))), 0);
+
+  dom.historySubtitle.textContent = `${filtered.length} 份試卷`;
+  dom.historySummary.innerHTML = [
+    summaryCard("完成試卷", filtered.length),
+    summaryCard("平均分數", avg === "--" ? "--" : `${avg}`),
+    summaryCard("最高分", best === "--" ? "--" : `${best}`),
+    summaryCard("累計錯題", totalWrong)
+  ].join("");
+
+  if (!filtered.length) {
+    state.activeHistoryId = "";
+    dom.historyList.innerHTML = "<div class=\"empty\">目前沒有這個科目的作答紀錄。</div>";
+    dom.historyDetail.innerHTML = "<div class=\"empty\">交卷後會在這裡保存逐題作答狀況。</div>";
+    return;
+  }
+
+  if (!filtered.some((item) => item.id === state.activeHistoryId)) {
+    state.activeHistoryId = filtered[0].id;
+  }
+
+  dom.historyList.innerHTML = filtered.map((item) => {
+    const wrong = Number(item.wrong) || Math.max(0, (Number(item.total) || 0) - (Number(item.correct) || 0));
+    const active = item.id === state.activeHistoryId ? " active" : "";
+    return `
+      <article class="item${active}">
+        <h4>${escapeHtml(formatDateTime(item.finishedAt))}</h4>
+        <p>${escapeHtml(item.subject || "未分類")} · ${escapeHtml(item.yearRange || "全部年份")} · ${escapeHtml(item.session || "全部")} · ${escapeHtml(modeLabel(item.mode))} · ${escapeHtml(item.order || "隨機出題")}</p>
+        <p>${escapeHtml(String(item.score ?? "--"))} 分 · ${escapeHtml(String(item.correct ?? "--"))}/${escapeHtml(String(item.total ?? "--"))} 題 · 錯 ${escapeHtml(String(wrong))} 題 · ${escapeHtml(formatDuration(Number(item.elapsedSeconds) || 0))}</p>
+        <div class="item-actions">
+          <button class="ghost-btn" type="button" data-history-open="${escapeAttr(item.id)}">查看試卷</button>
+          <button class="ghost-btn" type="button" data-history-retry="${escapeAttr(item.id)}">重做試卷</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  dom.historyList.querySelectorAll("[data-history-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeHistoryId = button.dataset.historyOpen;
+      renderHistory();
+    });
+  });
+
+  dom.historyList.querySelectorAll("[data-history-retry]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = normalizedHistory().find((candidate) => candidate.id === button.dataset.historyRetry);
+      if (!item || !item.questions.length) return;
+      const questions = item.questions
+        .map((record) => questionById(record.questionId))
+        .filter(Boolean);
+      if (!questions.length) return;
+      state.exam = questions;
+      state.current = 0;
+      state.answers = {};
+      state.marked = new Set();
+      state.submitted = false;
+      setView("exam");
+      resetTimer();
+      dom.buildStatus.textContent = `已載入歷史試卷 ${state.exam.length} 題`;
+      renderExam();
+    });
+  });
+
+  renderHistoryDetail(filtered.find((item) => item.id === state.activeHistoryId));
+}
+
+function summaryCard(label, value) {
+  return `
+    <div class="summary-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </div>
+  `;
+}
+
+function modeLabel(mode) {
+  const labels = {
+    exam: "考試",
+    practice: "練習",
+    wrong: "錯題",
+    year: "逐題"
+  };
+  return labels[mode] || "考試";
+}
+
+function renderHistoryDetail(item) {
+  if (!item) {
+    dom.historyDetail.innerHTML = "<div class=\"empty\">選擇一份紀錄查看每題作答狀況。</div>";
+    return;
+  }
+
+  if (!item.questions.length) {
+    dom.historyDetail.innerHTML = `
+      <div class="history-paper-head">
+        <div>
+          <h3>${escapeHtml(formatDateTime(item.finishedAt))}</h3>
+          <p>${escapeHtml(item.subject || "未分類")} · ${escapeHtml(item.yearRange || "全部年份")} · ${escapeHtml(String(item.score ?? "--"))} 分</p>
+        </div>
+      </div>
+      <div class="empty">這份是舊版紀錄，只保留分數摘要，沒有逐題作答資料。</div>
+    `;
+    return;
+  }
+
+  const wrong = Number(item.wrong) || Math.max(0, (Number(item.total) || 0) - (Number(item.correct) || 0));
+  const rows = item.questions.map((record) => {
+    const question = questionById(record.questionId);
+    if (!question) {
+      return `
+        <article class="history-question wrong">
+          <h4>第 ${escapeHtml(record.index || "--")} 題</h4>
+          <p>題目資料已不存在。</p>
+        </article>
+      `;
+    }
+    const selectedClass = record.isCorrect ? "selected-correct" : "selected-wrong";
+    return `
+      <article class="history-question ${record.isCorrect ? "correct" : "wrong"}">
+        <h4>第 ${escapeHtml(record.index || "--")} 題 · ${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · ${escapeHtml(question.sourceQuestionNumber || "")}</h4>
+        <p>${escapeHtml(question.stem)}</p>
+        ${questionMediaHtml(question) ? `<div class="question-media item-media">${questionMediaHtml(question)}</div>` : ""}
+        <div class="history-answer-row">
+          <span class="${selectedClass}">作答 ${escapeHtml(record.selected || "未作答")}</span>
+          <span>正解 ${escapeHtml(record.answer || answerLabel(question))}</span>
+          ${record.marked ? "<span>已標記</span>" : ""}
+        </div>
+        ${record.note ? `<p>筆記：${escapeHtml(record.note)}</p>` : ""}
+      </article>
+    `;
+  }).join("");
+
+  dom.historyDetail.innerHTML = `
+    <div class="history-paper-head">
+      <div>
+        <h3>${escapeHtml(formatDateTime(item.finishedAt))}</h3>
+        <p>${escapeHtml(item.subject || "未分類")} · ${escapeHtml(item.yearRange || "全部年份")} · ${escapeHtml(item.session || "全部")} · ${escapeHtml(modeLabel(item.mode))} · ${escapeHtml(item.order || "隨機出題")}</p>
+        <p>${escapeHtml(String(item.score ?? "--"))} 分 · 答對 ${escapeHtml(String(item.correct ?? "--"))}/${escapeHtml(String(item.total ?? "--"))} 題 · 答錯 ${escapeHtml(String(wrong))} 題 · ${escapeHtml(formatDuration(Number(item.elapsedSeconds) || 0))}</p>
+      </div>
+    </div>
+    ${rows}
+  `;
+}
+
 function renderSearch() {
   const subject = dom.searchSubject.value;
   const query = dom.searchInput.value.trim().toLowerCase();
@@ -587,6 +881,7 @@ function renderSearch() {
         question.subject,
         question.sourceFile,
         question.answerFile,
+        question.hasImage ? "圖片題" : "",
         question.hasImageOptions ? "圖片選項" : "",
         ...(question.tags || [])
       ].join(" ").toLowerCase();
@@ -605,7 +900,7 @@ function renderSearch() {
     <article class="item">
       <h4>${escapeHtml(question.stem)}</h4>
       <p>${escapeHtml(question.subject)} · ${question.year} 年${escapeHtml(question.session)} · ${escapeHtml(question.sourceFile || "")}</p>
-      <p>答案 ${escapeHtml(answerLabel(question))} · ${escapeHtml((question.tags || []).join("、"))}${question.hasImageOptions ? " · 圖片選項" : ""}</p>
+      <p>答案 ${escapeHtml(answerLabel(question))} · ${escapeHtml((question.tags || []).join("、"))}${question.hasImage ? " · 圖片題" : ""}${question.hasImageOptions ? " · 圖片選項" : ""}</p>
     </article>
   `).join("");
 }
@@ -622,7 +917,7 @@ function renderImport() {
 
   const subjects = manifest.subjects || [];
   const issues = manifest.issues || [];
-  dom.importSubtitle.textContent = `${manifest.totals.questionPdfs} 份試題 · ${manifest.totals.answerPdfs} 份解答 · ${manifest.totals.imageQuestions || 0} 題圖片選項`;
+  dom.importSubtitle.textContent = `${manifest.totals.questionPdfs} 份試題 · ${manifest.totals.answerPdfs} 份解答 · ${manifest.totals.imageQuestions || 0} 題圖片題`;
   dom.issueCount.textContent = `${issues.length} 筆`;
 
   dom.importGrid.innerHTML = subjects.map((subject) => `
@@ -659,6 +954,7 @@ function setView(viewName) {
   const titles = {
     exam: ["模擬考產生器", "依科目、年度與題數抽題，完成後保留錯題紀錄。"],
     wrong: ["錯題本", "保留本機作答紀錄，重新練習答錯題目。"],
+    history: ["作答紀錄", "依科目分類保存每一次試卷與逐題作答狀況。"],
     search: ["題庫搜尋", "依科目、關鍵字與來源查找題目。"],
     import: ["匯入狀態", "檢查試題檔案與解答檔案配對狀態。"]
   };
@@ -666,6 +962,7 @@ function setView(viewName) {
   dom.pageTitle.textContent = titles[viewName][0];
   dom.pageSubtitle.textContent = titles[viewName][1];
   if (viewName === "wrong") renderWrongBook();
+  if (viewName === "history") renderHistory();
   if (viewName === "search") renderSearch();
   if (viewName === "import") renderImport();
 }
@@ -729,7 +1026,10 @@ function bindEvents() {
   });
 
   $$(".segmented button").forEach((button) => {
-    button.addEventListener("click", () => setModeButton(button.dataset.mode));
+    button.addEventListener("click", () => {
+      setModeButton(button.dataset.mode);
+      if (button.dataset.mode === "year") syncYearRange("start");
+    });
   });
 
   $("#newExamBtn").addEventListener("click", buildExam);
@@ -784,7 +1084,7 @@ function bindEvents() {
   dom.startYearSelect.addEventListener("change", () => syncYearRange("start"));
   dom.endYearSelect.addEventListener("change", () => syncYearRange("end"));
 
-  [dom.subjectSelect, dom.countInput].forEach((control) => {
+  [dom.subjectSelect, dom.sessionSelect, dom.orderSelect, dom.countInput].forEach((control) => {
     control.addEventListener("change", updateAvailability);
     control.addEventListener("input", updateAvailability);
   });
@@ -799,6 +1099,8 @@ function bindEvents() {
     control.addEventListener("input", renderSearch);
     control.addEventListener("change", renderSearch);
   });
+
+  dom.historySubject.addEventListener("change", renderHistory);
 }
 
 async function init() {
@@ -819,6 +1121,7 @@ async function init() {
   updateAvailability();
   buildExam();
   renderWrongBook();
+  renderHistory();
   renderSearch();
   renderImport();
 }
