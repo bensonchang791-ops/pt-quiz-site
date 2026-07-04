@@ -20,6 +20,7 @@
       <nav class="nav" aria-label="主選單">
         <button class="active" type="button" data-view="exam"><span>▦</span>模擬考</button>
         <button type="button" data-view="wrong"><span>✓</span>錯題本</button>
+        <button type="button" data-view="history"><span>◴</span>作答紀錄</button>
         <button type="button" data-view="search"><span>⌕</span>題庫搜尋</button>
         <button type="button" data-view="import"><span>↥</span>匯入狀態</button>
       </nav>
@@ -77,8 +78,23 @@
               <select id="endYearSelect"></select>
             </label>
             <label class="field">
+              <span>考試別</span>
+              <select id="sessionSelect">
+                <option value="all">全部</option>
+                <option value="第一次">第一次</option>
+                <option value="第二次">第二次</option>
+              </select>
+            </label>
+            <label class="field">
               <span>題數</span>
               <input id="countInput" type="number" min="1" max="80" value="10">
+            </label>
+            <label class="field">
+              <span>題序</span>
+              <select id="orderSelect">
+                <option value="random">隨機出題</option>
+                <option value="source">照原始題號</option>
+              </select>
             </label>
             <div class="field">
               <span>模式</span>
@@ -86,6 +102,7 @@
                 <button class="active" type="button" data-mode="exam">考試</button>
                 <button type="button" data-mode="practice">練習</button>
                 <button type="button" data-mode="wrong">錯題</button>
+                <button type="button" data-mode="year">逐題</button>
               </div>
             </div>
           </div>
@@ -168,6 +185,33 @@
           </div>
           <div class="item-list" id="wrongList"></div>
         </section>
+      </section>
+
+      <section class="view" id="historyView">
+        <section class="builder-panel">
+          <div class="panel-title">
+            <div>
+              <h3>作答紀錄</h3>
+              <p id="historySubtitle">依科目分類保存每一次試卷</p>
+            </div>
+          </div>
+          <div class="builder-grid history-grid">
+            <label class="field">
+              <span>科目</span>
+              <select id="historySubject"></select>
+            </label>
+          </div>
+          <div class="history-summary" id="historySummary"></div>
+        </section>
+
+        <div class="history-layout">
+          <section class="table-panel">
+            <div class="item-list" id="historyList"></div>
+          </section>
+          <section class="table-panel history-detail" id="historyDetail">
+            <div class="empty">選擇一份紀錄查看每題作答狀況。</div>
+          </section>
+        </div>
       </section>
 
       <section class="view" id="searchView">
