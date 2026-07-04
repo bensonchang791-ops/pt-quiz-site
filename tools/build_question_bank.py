@@ -75,6 +75,7 @@ FULLWIDTH_TRANSLATION = str.maketrans({
 
 QUESTION_START = re.compile(r"(?m)^\s*(\d{1,3})[\.．、]\s*")
 OPTION_START = re.compile(r"(?m)^\s*([A-D])\s*[\.．、]\s*")
+EMBEDDED_IMAGE_CUE = re.compile(r"(下圖|上圖|附圖|圖示|圖形|圖為|如下圖|如圖)")
 
 
 def rel(path: Path) -> str:
@@ -414,6 +415,121 @@ def crop_question_images(pdf_path: Path, number: int, empty_options: list[str], 
     return image_paths
 
 
+def write_crop_svg(pdf_path: Path, page_index: int, page, crop_box_pdf: tuple[float, float, float, float], qid: str, image_number: int) -> str:
+    x0, y0, x1, y1 = crop_box_pdf
+    with tempfile.TemporaryDirectory() as temp_name:
+        rendered = render_pdf_page(pdf_path, page_index, Path(temp_name))
+        with Image.open(rendered) as image:
+            scale_x = image.width / page.width
+            scale_y = image.height / page.height
+            crop_box = (
+                round(x0 * scale_x),
+                round(y0 * scale_y),
+                round(x1 * scale_x),
+                round(y1 * scale_y),
+            )
+            cropped = image.crop(crop_box)
+            buffer = BytesIO()
+            cropped.save(buffer, format="PNG", optimize=True)
+            encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
+            file_name = f"{qid}-{image_number:02d}.svg"
+            output_path = QUESTION_IMAGE_DIR / file_name
+            output_path.write_text(
+                (
+                    f'<svg xmlns="http://www.w3.org/2000/svg" width="{cropped.width}" '
+                    f'height="{cropped.height}" viewBox="0 0 {cropped.width} {cropped.height}">'
+                    f'<image href="data:image/png;base64,{encoded}" width="{cropped.width}" '
+                    f'height="{cropped.height}"/></svg>\n'
+                ),
+                encoding="utf-8",
+            )
+    return f"data/question-images/{file_name}"
+
+
+def crop_embedded_question_images(pdf_path: Path, number: int, qid: str) -> list[str]:
+    starts = pdf_question_starts(pdf_path)
+    start_by_number = {start["number"]: start for start in starts}
+    start = start_by_number.get(number)
+    if not start:
+        return []
+
+    end = start_by_number.get(number + 1)
+    image_paths: list[str] = []
+
+    with pdfplumber.open(pdf_path) as pdf:
+        last_page = end["pageIndex"] if end else len(pdf.pages) - 1
+        for page_index in range(start["pageIndex"], last_page + 1):
+            page = pdf.pages[page_index]
+            for image in page.images:
+                image_top = float(image["top"])
+                image_bottom = float(image["bottom"])
+                if page_index == start["pageIndex"] and image_bottom <= start["top"]:
+                    continue
+                if end and page_index == end["pageIndex"] and image_top >= end["top"]:
+                    continue
+                if image_bottom <= 18 or image_top >= page.height - 18:
+                    continue
+
+                margin = 4
+                x0 = max(20, float(image["x0"]) - margin)
+                y0 = max(18, image_top - margin)
+                x1 = min(page.width - 20, float(image["x1"]) + margin)
+                y1 = min(page.height - 18, image_bottom + margin)
+                if x1 - x0 < 24 or y1 - y0 < 24:
+                    continue
+
+                image_paths.append(write_crop_svg(
+                    pdf_path,
+                    page_index,
+                    page,
+                    (x0, y0, x1, y1),
+                    qid,
+                    len(image_paths) + 1,
+                ))
+
+    return image_paths
+
+
+def embedded_question_image_boxes(pdf_path: Path, candidate_numbers: set[int]) -> dict[int, list[tuple[int, tuple[float, float, float, float]]]]:
+    if not candidate_numbers:
+        return {}
+
+    starts = pdf_question_starts(pdf_path)
+    boxes: dict[int, list[tuple[int, tuple[float, float, float, float]]]] = {}
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for index, start in enumerate(starts):
+            number = start["number"]
+            if number not in candidate_numbers:
+                continue
+            end = starts[index + 1] if index + 1 < len(starts) else None
+            last_page = end["pageIndex"] if end else len(pdf.pages) - 1
+
+            for page_index in range(start["pageIndex"], last_page + 1):
+                page = pdf.pages[page_index]
+                for image in page.images:
+                    image_top = float(image["top"])
+                    image_bottom = float(image["bottom"])
+                    if page_index == start["pageIndex"] and image_bottom <= start["top"]:
+                        continue
+                    if end and page_index == end["pageIndex"] and image_top >= end["top"]:
+                        continue
+                    if image_bottom <= 18 or image_top >= page.height - 18:
+                        continue
+
+                    margin = 4
+                    x0 = max(20, float(image["x0"]) - margin)
+                    y0 = max(18, image_top - margin)
+                    x1 = min(page.width - 20, float(image["x1"]) + margin)
+                    y1 = min(page.height - 18, image_bottom + margin)
+                    if x1 - x0 < 24 or y1 - y0 < 24:
+                        continue
+
+                    boxes.setdefault(number, []).append((page_index, (x0, y0, x1, y1)))
+
+    return boxes
+
+
 def build_question_bank() -> tuple[dict, dict]:
     manifest = build_manifest()
     questions: list[dict] = []
@@ -432,7 +548,24 @@ def build_question_bank() -> tuple[dict, dict]:
         answer_path = ROOT / document["answerPdf"]
         parsed_questions, question_issues = parse_questions(extract_pdf_text(question_path))
         parsed_answers, answer_issues = parse_answers(extract_pdf_text(answer_path))
-        document_issues = [
+        embedded_image_candidates = {
+            int(question["sourceQuestionNumber"])
+            for question in parsed_questions
+            if not question.get("emptyOptions")
+            and EMBEDDED_IMAGE_CUE.search(question.get("stem", ""))
+        }
+        try:
+            embedded_image_boxes = embedded_question_image_boxes(question_path, embedded_image_candidates)
+        except Exception as error:  # pragma: no cover - extraction diagnostics
+            embedded_image_boxes = {}
+            document_issues = [{
+                "type": "question-embedded-image-scan-failed",
+                "title": "題幹圖片掃描失敗",
+                "detail": str(error),
+            }]
+        else:
+            document_issues = []
+        document_issues += [
             issue for issue in question_issues
             if issue["type"] != "question-option-text-missing"
         ] + answer_issues
@@ -506,6 +639,43 @@ def build_question_bank() -> tuple[dict, dict]:
                         "title": "圖片選項尚未補入",
                         "detail": f"第 {number} 題：{', '.join(empty_options)} 選項沒有文字",
                     })
+            else:
+                try:
+                    image_paths = []
+                    boxes_for_question = embedded_image_boxes.get(number, [])
+                    if boxes_for_question:
+                        with pdfplumber.open(question_path) as pdf:
+                            for image_index, (page_index, crop_box_pdf) in enumerate(
+                                boxes_for_question,
+                                start=1,
+                            ):
+                                image_paths.append(write_crop_svg(
+                                    question_path,
+                                    page_index,
+                                    pdf.pages[page_index],
+                                    crop_box_pdf,
+                                    qid,
+                                    image_index,
+                                ))
+                except Exception as error:  # pragma: no cover - extraction diagnostics
+                    image_paths = []
+                    document_issues.append({
+                        "type": "question-embedded-image-crop-failed",
+                        "title": "題幹圖片裁切失敗",
+                        "detail": f"第 {number} 題：{error}",
+                    })
+
+                if image_paths:
+                    document["imageQuestionCount"] += 1
+                    image_question_count += 1
+                    media = [
+                        {
+                            "type": "image",
+                            "src": path,
+                            "alt": f"{document['subject']} {document['year']}年{document['session']}第 {number} 題圖 {index + 1}",
+                        }
+                        for index, path in enumerate(image_paths)
+                    ]
 
             question = {
                 "id": qid,
@@ -529,7 +699,8 @@ def build_question_bank() -> tuple[dict, dict]:
             }
             if media:
                 question["media"] = media
-                question["hasImageOptions"] = True
+                question["hasImage"] = True
+                question["hasImageOptions"] = bool(empty_options)
             questions.append(question)
             document["usableQuestionCount"] += 1
 
