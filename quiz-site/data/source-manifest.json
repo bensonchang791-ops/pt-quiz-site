@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-01T12:08:02.936515+00:00",
+  "generatedAt": "2026-07-05T01:55:18.937262+00:00",
   "root": ".",
   "pdfTextExtractor": null,
   "totals": {
@@ -10,7 +10,7 @@
     "answerPdfs": 126,
     "issues": 0,
     "questions": 10080,
-    "imageQuestions": 239,
+    "imageQuestions": 241,
     "documentsExtracted": 126
   },
   "subjects": [
@@ -33,7 +33,7 @@
       "questionPdfs": 21,
       "pairedQuestionPdfs": 21,
       "answerPdfs": 21,
-      "imageQuestionCount": 88
+      "imageQuestionCount": 90
     },
     {
       "name": "神經",
@@ -862,7 +862,7 @@
       "questionCount": 80,
       "answerCount": 80,
       "usableQuestionCount": 80,
-      "imageQuestionCount": 6
+      "imageQuestionCount": 7
     },
     {
       "subject": "技術學",
@@ -875,7 +875,7 @@
       "questionCount": 80,
       "answerCount": 80,
       "usableQuestionCount": 80,
-      "imageQuestionCount": 5
+      "imageQuestionCount": 6
     },
     {
       "subject": "神經",

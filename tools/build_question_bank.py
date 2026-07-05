@@ -75,11 +75,24 @@ FULLWIDTH_TRANSLATION = str.maketrans({
 
 QUESTION_START = re.compile(r"(?m)^\s*(\d{1,3})[\.．、]\s*")
 OPTION_START = re.compile(r"(?m)^\s*([A-D])\s*[\.．、]\s*")
-EMBEDDED_IMAGE_CUE = re.compile(r"(下圖|上圖|附圖|圖示|圖形|圖為|如下圖|如圖)")
+EMBEDDED_IMAGE_CUE = re.compile(r"(下圖|上圖|附圖|圖示|圖形|圖為|如下圖|如圖|圖\s*[A-D])")
+
+MANUAL_EMBEDDED_IMAGE_CROPS = {
+    ("技術學/115第一次技術學.pdf", 74): [
+        (14, (41.359, 509.442, 463.359, 738.4)),
+    ],
+}
 
 
 def rel(path: Path) -> str:
     return str(path.relative_to(ROOT))
+
+
+def pdf_rel_key(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(path)
 
 
 def extract_pdf_text(path: Path) -> str:
@@ -494,13 +507,26 @@ def embedded_question_image_boxes(pdf_path: Path, candidate_numbers: set[int]) -
     if not candidate_numbers:
         return {}
 
-    starts = pdf_question_starts(pdf_path)
+    pdf_key = pdf_rel_key(pdf_path)
     boxes: dict[int, list[tuple[int, tuple[float, float, float, float]]]] = {}
+    manual_numbers = {
+        number
+        for source_path, number in MANUAL_EMBEDDED_IMAGE_CROPS
+        if source_path == pdf_key and number in candidate_numbers
+    }
+    for number in manual_numbers:
+        boxes[number] = MANUAL_EMBEDDED_IMAGE_CROPS[(pdf_key, number)]
+
+    scan_numbers = candidate_numbers - manual_numbers
+    if not scan_numbers:
+        return boxes
+
+    starts = pdf_question_starts(pdf_path)
 
     with pdfplumber.open(pdf_path) as pdf:
         for index, start in enumerate(starts):
             number = start["number"]
-            if number not in candidate_numbers:
+            if number not in scan_numbers:
                 continue
             end = starts[index + 1] if index + 1 < len(starts) else None
             last_page = end["pageIndex"] if end else len(pdf.pages) - 1
