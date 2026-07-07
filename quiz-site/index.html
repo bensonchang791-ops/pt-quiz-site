@@ -21,6 +21,7 @@
         <button class="active" type="button" data-view="exam"><span>▦</span>模擬考</button>
         <button type="button" data-view="wrong"><span>✓</span>錯題本</button>
         <button type="button" data-view="history"><span>◴</span>作答紀錄</button>
+        <button type="button" data-view="notes"><span>▤</span>筆記統整</button>
         <button type="button" data-view="search"><span>⌕</span>題庫搜尋</button>
         <button type="button" data-view="import"><span>↥</span>匯入狀態</button>
       </nav>
@@ -37,6 +38,7 @@
         <div class="side-title">本機紀錄</div>
         <div class="side-stat"><span>完成試卷</span><strong id="historyTotal">0</strong></div>
         <div class="side-stat"><span>錯題數</span><strong id="wrongTotal">0</strong></div>
+        <div class="side-stat"><span>筆記數</span><strong id="noteTotal">0</strong></div>
         <div class="side-stat"><span>平均分數</span><strong id="avgScore">--</strong></div>
       </section>
     </aside>
@@ -103,6 +105,17 @@
                 <button type="button" data-mode="practice">練習</button>
                 <button type="button" data-mode="wrong">錯題</button>
                 <button type="button" data-mode="year">逐題</button>
+              </div>
+            </div>
+            <div class="field keyword-field">
+              <span>關鍵字（符合任一）</span>
+              <div class="keyword-grid" id="keywordGrid">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 1">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 2">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 3">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 4">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 5">
+                <input class="keyword-input" type="search" maxlength="40" placeholder="關鍵字 6">
               </div>
             </div>
           </div>
@@ -212,6 +225,32 @@
             <div class="empty">選擇一份紀錄查看每題作答狀況。</div>
           </section>
         </div>
+      </section>
+
+      <section class="view" id="notesView">
+        <section class="builder-panel">
+          <div class="panel-title">
+            <div>
+              <h3>筆記統整</h3>
+              <p id="noteCount">--</p>
+            </div>
+          </div>
+          <div class="builder-grid notes-grid">
+            <label class="field">
+              <span>科目</span>
+              <select id="noteSubject"></select>
+            </label>
+            <label class="field">
+              <span>搜尋筆記</span>
+              <input id="noteSearchInput" type="search" placeholder="輸入筆記或題目關鍵字">
+            </label>
+          </div>
+          <div class="history-summary note-summary" id="noteSummary"></div>
+        </section>
+
+        <section class="table-panel">
+          <div class="item-list" id="noteList"></div>
+        </section>
       </section>
 
       <section class="view" id="searchView">

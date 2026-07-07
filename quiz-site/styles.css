@@ -32,7 +32,8 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -296,6 +297,11 @@ button {
   margin-bottom: 14px;
 }
 
+.notes-grid {
+  grid-template-columns: 240px minmax(240px, 1fr);
+  margin-bottom: 14px;
+}
+
 .field {
   display: block;
 }
@@ -323,6 +329,16 @@ button {
 .field input:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(29, 107, 88, .13);
+}
+
+.keyword-field {
+  grid-column: 1 / -1;
+}
+
+.keyword-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(96px, 1fr));
+  gap: 8px;
 }
 
 .segmented {
@@ -708,6 +724,17 @@ button {
   font-size: 13px;
 }
 
+.item .note-text {
+  margin-bottom: 8px;
+  color: var(--ink);
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+
+.note-item {
+  border-left: 4px solid var(--green);
+}
+
 .item-actions {
   display: flex;
   gap: 8px;
@@ -893,10 +920,15 @@ button {
   .builder-grid,
   .search-grid,
   .history-grid,
+  .notes-grid,
   .history-summary,
   .history-layout,
   .import-grid {
     grid-template-columns: 1fr;
+  }
+
+  .keyword-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .question-title {
@@ -918,5 +950,9 @@ button {
   .option {
     grid-template-columns: 34px 1fr;
     padding-right: 10px;
+  }
+
+  .keyword-grid {
+    grid-template-columns: 1fr;
   }
 }
